@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  buttonType = 'default';
+
+  helloWorld() {
+    alert('Hello world!');
+  }
 }
