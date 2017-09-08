@@ -5,11 +5,11 @@ import CustomStore from 'devextreme/data/custom_store';
 import 'rxjs/add/operator/toPromise';
 
 @Component({
-  selector: 'customer-list',
-  templateUrl: './customer-list.component.html',
-  styleUrls: ['./customer-list.component.css']
+  selector: 'order-list',
+  templateUrl: './order-list.component.html',
+  styleUrls: ['./order-list.component.css']
 })
-export class CustomerListComponent implements OnInit {
+export class OrderListComponent implements OnInit {
   dataSource: any = {};
 
   constructor(@Inject(Http) http: Http) {
