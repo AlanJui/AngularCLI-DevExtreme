@@ -27,6 +27,16 @@
                         <span class='glyphicon glyphicon-th-list'></span> Order List
                     </a>
                 </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/order']">
+                        <span class='glyphicon glyphicon-th-list'></span> Order Edit
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/employee']">
+                        <span nclass='glyphicon glyphicon-th-list'></span> Employee
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

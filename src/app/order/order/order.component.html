@@ -1,0 +1,51 @@
+<dx-data-grid id="gridContainer" [dataSource]="dataSource"
+  [allowColumnReordering]="true"
+  (onEditingStart)="logEvent('EditingStart')"
+  (onInitNewRow)="logEvent('InitNewRow')"
+  (onRowInserting)="logEvent('RowInserting')"
+  (onRowInserted)="logEvent('RowInserted')"
+  (onRowUpdating)="logEvent('RowUpdating')"
+  (onRowUpdated)="logEvent('RowUpdated')"
+  (onRowRemoving)="logEvent('RowRemoving')"
+  (onRowRemoved)="logEvent('RowRemoved')">
+
+  <dxo-paging [enabled]="true"></dxo-paging>
+  <dxo-editing 
+      mode="row"
+      [allowUpdating]="true"
+      [allowDeleting]="true"
+      [allowAdding]="true">
+  </dxo-editing>
+
+  <dxi-column dataField="customerID"></dxi-column>
+  <dxi-column 
+    dataField="orderDate"
+    [width]="125"
+    dataType="date"
+  ></dxi-column>
+  <dxi-column dataField="freight"></dxi-column>
+  <dxi-column dataField="shipCountry"></dxi-column>
+  <dxi-column dataField="shipRegion"></dxi-column>
+
+  <dxo-remote-operations
+    [sorting]="true"
+    [paging]="true">
+  </dxo-remote-operations>
+  <dxo-paging [pageSize]="10"></dxo-paging>
+  <dxo-pager
+    [showPageSizeSelector]="true"
+    [allowedPageSizes]="[8, 12, 20]"
+  ></dxo-pager>
+</dx-data-grid>
+
+<div id="events">
+  <div>
+      <div class="caption">
+          Fired events
+      </div>
+      <dx-button id="clear" text="Clear" (onClick)="clearEvents()"></dx-button>
+  </div>
+  <ul>
+      <li *ngFor="let event of events">{{event}}</li>
+  </ul>
+</div>
