@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from '../employee.service';
-import { Employee, State } from '../employee.service';
+import { EmployeeService } from './employee.service';
+import { State } from "../models/state";
+import { Employee } from "../models/employee";
 import { createStore } from "devextreme-aspnet-data/js/dx.aspnet.data";
 
 @Component({
