@@ -11,27 +11,14 @@ import { createStore } from "devextreme-aspnet-data/js/dx.aspnet.data";
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
-  dataSource: any = {};
-  // dataSource: Employee[];
+  dataSource: Employee[];
   states: State[];
-  events: Array<string>;
+  events: Array<string> = [];
 
   constructor(private service: EmployeeService) { }
 
   ngOnInit() {
-    // this.dataSource = this.service.getEmployees();
-    this.dataSource = createStore({
-      key: "orderID",
-      loadUrl: "http://192.168.66.10:5000/api/orders",
-      updateUrl: "http://192.168.66.10:5000/api/update-order",
-      insertUrl: "http://192.168.66.10:5000/api/insert-order",
-      deleteUrl: "http://192.168.66.10:5000/api/delete-order",
-
-      onBeforeSend: function(operation, ajaxSettings) {
-          // operation - any of "load", "update", "insert", "delete"
-          // ajaxSettings - http://api.jquery.com/jquery.ajax/
-      }
-    });
+    this.dataSource = this.service.getEmployees();
     this.states = this.service.getStates();
   }
 
