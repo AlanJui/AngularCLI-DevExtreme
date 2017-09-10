@@ -10,7 +10,7 @@ export interface IAppConfig {
 export const AppConfig: IAppConfig = {
   // apiEndpoint: 'http://114.198.172.94:8088/api'
   // apiEndpoint: 'http://192.168.66.10:8088/api'
-  apiEndpoint: 'http://192.168.66.11:5000/api'
+  apiEndpoint: 'http://192.168.66.10:5000/api'
 }
 
 // export class AppSettings {
