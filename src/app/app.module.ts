@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { DxDataGridModule } from 'devextreme-angular';
 import { DxButtonModule } from 'devextreme-angular';
 
+import { APP_CONFIG, AppConfig } from "./app.config";
 import { AppRoutingModule } from "./app-routing.module";
 import { EmployeeService } from "./employee/employee.service";
 
@@ -34,6 +35,10 @@ import { EmployeeComponent } from './employee/employee.component';
     EmployeeComponent
   ],
   providers: [
+    {
+      provide: APP_CONFIG,
+      useValue: AppConfig
+    },
     EmployeeService
   ],
   bootstrap: [AppComponent]

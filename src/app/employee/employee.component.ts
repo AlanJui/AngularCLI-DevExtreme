@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from './employee.service';
-import { State } from "../models/state";
-import { Employee } from "../models/employee";
+import { Inject, Component, OnInit } from '@angular/core';
+
 import { createStore } from "devextreme-aspnet-data/js/dx.aspnet.data";
+
+import { APP_CONFIG, IAppConfig } from "../app.config";
+import { EmployeeService } from './employee.service';
+import { Employee } from "../models/employee";
 
 @Component({
   providers: [EmployeeService],
@@ -12,27 +14,29 @@ import { createStore } from "devextreme-aspnet-data/js/dx.aspnet.data";
 })
 export class EmployeeComponent implements OnInit {
   dataSource: any = {};
-  // dataSource: Employee[];
-  states: State[];
   events: Array<string> = [];
+  private API: string;
 
-  constructor(private employeeService: EmployeeService) { }
+  constructor(
+    @Inject(APP_CONFIG) private config,
+    private employeeService: EmployeeService) 
+  { 
+      this.API = `${config.apiEndpoint}`;
+  }
 
   ngOnInit() {
     this.dataSource = createStore({
       key: "employeeId",
-      loadUrl: "http://192.168.66.11:5000/api/employees-list",
-      updateUrl: "http://192.168.66.11:5000/api/employees-update",
-      insertUrl: "http://192.168.66.11:5000/api/employees-create",
-      deleteUrl: "http://192.168.66.11:5000/api/employees-delete",
+      loadUrl: `${this.API}/employees-list`,
+      updateUrl: `${this.API}/employees-update`,
+      insertUrl: `${this.API}/employees-create`,
+      deleteUrl: `${this.API}/employees-delete`,
 
       onBeforeSend: function(operation, ajaxSettings) { 
         // operation - any of "load", "update", "insert", "delete"
         // ajaxSettings - http://api.jquery.com/jquery.ajax/
       }
     });
-
-    this.states = this.employeeService.getStates();
   }
 
   logEvent(eventName) {

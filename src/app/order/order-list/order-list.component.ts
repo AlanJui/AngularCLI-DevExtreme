@@ -31,11 +31,11 @@ export class OrderListComponent implements OnInit {
     }
     
     logEvent(eventName) {
-    this.events.unshift(eventName);
+        this.events.unshift(eventName);
     }
     
     clearEvents() {
-    this.events = [];
+        this.events = [];
     }
     
 }
