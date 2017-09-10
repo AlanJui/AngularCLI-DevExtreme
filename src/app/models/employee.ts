@@ -1,12 +1,21 @@
 export class Employee {
-  ID: number;
+  EmployeeID: number;
   FirstName: string;
   LastName: string;
-  Prefix: string;
-  Position: string;
+  Title: string;
+  TitleOfCourtesy: string;
   BirthDate: string;
   HireDate: string;
-  Notes: string;
   Address: string;
+  City: string;
+  Region: string;
+  PostalCode: string;
+  Country: string;
+  HomePhone: string;
+  Extension: string;
+  Photo: string;
+  PhotoPath: string;
+  Notes: string;
+  ReportsTo: number;
   StateID: number;
 }
