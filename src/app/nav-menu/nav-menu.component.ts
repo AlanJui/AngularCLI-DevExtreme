@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+// declare var jquery: any;
+// declare var $: any;
 
 @Component({
   selector: 'nav-menu',
@@ -10,6 +12,11 @@ export class NavMenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  navbarToggle() {
+    // alert('OK!');
+    // $('.navbar-toggle').slideToggle();
   }
 
 }
