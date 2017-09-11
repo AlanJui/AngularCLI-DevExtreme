@@ -1,45 +1,83 @@
-<!-- <dx-data-grid id="gridContainer" [dataSource]="dataSource"
-    [allowColumnReordering]="true"
-    (onEditingStart)="logEvent('EditingStart')"
-    (onInitNewRow)="logEvent('InitNewRow')"
-    (onRowInserting)="logEvent('RowInserting')"
-    (onRowInserted)="logEvent('RowInserted')"
-    (onRowUpdating)="logEvent('RowUpdating')"
-    (onRowUpdated)="logEvent('RowUpdated')"
-    (onRowRemoving)="logEvent('RowRemoving')"
-    (onRowRemoved)="logEvent('RowRemoved')">
-</dx-data-grid> -->
-
-<dx-data-grid id="gridContainer" [dataSource]="dataSource"
-    [allowColumnReordering]="true"
-    (onEditingStart)="logEvent('EditingStart')"
-    (onInitNewRow)="logEvent('InitNewRow')"
-    (onRowInserting)="logEvent('RowInserting')"
-    (onRowInserted)="logEvent('RowInserted')"
-    (onRowUpdating)="logEvent('RowUpdating')"
-    (onRowUpdated)="logEvent('RowUpdated')"
-    (onRowRemoving)="logEvent('RowRemoving')"
-    (onRowRemoved)="logEvent('RowRemoved')">
-
-    <dxi-column dataField="customerID"
-        caption="Customer"
-        ></dxi-column>
-    <dxi-column dataField="orderDate"
-        dataType="date"
-    ></dxi-column>
-    <dxi-column dataField="freight"></dxi-column>
-    <dxi-column dataField="shipCountry"></dxi-column>
-    <dxi-column dataField="shipRegion"
-        dataField="shipVia"
-    ></dxi-column>
+<dx-data-grid id="gridContainer" 
+    [dataSource]="masterDataSource"
+    [masterDetail]="{ enabled: true, template: 'detail' }" >
     
+    <dxi-column 
+        dataField="customerID"
+        caption="Customer" 
+        [width]=200 >
+        <dxo-lookup
+            [dataSource]="customersLookup"
+            valueExpr="value"
+            displayExpr="text" >
+        </dxo-lookup>
+    </dxi-column>
+    <dxi-column 
+        dataField="orderDate"
+        dataType="date">
+        <dxo-header-filter
+            [groupInterval]="quarter" >
+        </dxo-header-filter>
+    </dxi-column>
+    <dxi-column dataField="freight">
+        <dxo-header-filter
+            [groupInterval]="100" >
+        </dxo-header-filter>
+    </dxi-column>
+    <dxi-column dataField="shipCountry"></dxi-column>
+    <dxi-column dataField="shipRegion"></dxi-column>
+    <dxi-column 
+        dataField="shipVia">
+        <dxo-lookup
+            [dataSource]="shippersLookup"
+            valueExpr="value"
+            displayExpr="text" >
+        </dxo-lookup>
+    </dxi-column>
+
+    <dxo-editing 
+        [allowUpdating]="true"
+        [allowDeleting]="true"
+        [allowAdding]="true">
+    </dxo-editing>
+
+    <dxo-search-panel [visible]="true"></dxo-search-panel>
+    <dxo-paging [pageSize]="10"></dxo-paging>
+    <dxo-group-panel [visible]="true"></dxo-group-panel>
+    <dxo-grouping #expand [autoExpandAll]="true"></dxo-grouping>
+    <dxo-summary>
+        <dxi-total-item
+            column="freight"
+            summaryType="sum"
+            valueFormat="currency"
+            displayFormat="Total: {0}">
+        </dxi-total-item>
+        <dxi-group-item
+            column="freight"
+            summaryType="sum">
+        </dxi-group-item>
+        <dxi-group-item
+            summaryType="count">
+        </dxi-group-item>
+    </dxo-summary>
     <dxo-remote-operations
         [sorting]="true"
         [paging]="true">
     </dxo-remote-operations>
-    <dxo-paging [pageSize]="12"></dxo-paging>
-    <dxo-pager
-        [showPageSizeSelector]="true"
-        [allowedPageSizes]="[8, 12, 20]"
-    ></dxo-pager>
+
+    <div *dxTemplate="let order of 'detail'">
+        <div class="internal-grid-container" (click)="getDetails(order.data.orderID)">
+            <div>{{order.data.orderID}}</div>
+            <dx-data-grid class="internal-grid"
+                [dataSource]="orderDetails"
+                [showBorders]="true"
+                [columnAutoWidth]="true">
+                    <dxi-column dataField="product"></dxi-column>
+                    <dxi-column dataField="price" dataType="currency"></dxi-column>
+                    <dxi-column dataField="quantity"></dxi-column>
+                    <dxi-column dataField="sum" dataType="currency"></dxi-column>
+            </dx-data-grid>
+        </div>
+    </div>    
+    
 </dx-data-grid>

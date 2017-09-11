@@ -1,27 +1,23 @@
 import { Injectable, Inject } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { APP_CONFIG, IAppConfig } from "../app.config";
-import { State } from "../models/state";
-import { Employee } from "../models/employee";
+import { environment } from "../../environments/environment";
+import { State } from '../models/state';
+import { Employee } from '../models/employee';
 
 @Injectable()
 export class EmployeeService {
   // private URL: string = 'http://192.168.66.11:5000/api/employees';
-  private URL: string;
+  URL: string = environment.API;
 
-  constructor(
-    @Inject(APP_CONFIG) private config,
-    private http: Http) 
-  {
-      this.URL = `${config.apiEndpoint}/employees`;
+  constructor(private http: Http) {
   }
 
   getEmployees(): Promise<Employee[]> {
     // return employees;
-    return this.http.get(this.URL)
+    return this.http.get(`${this.URL}/employees`)
               .toPromise()
               .then(response => response.json().data as Employee[])
               .catch(this.handleError);

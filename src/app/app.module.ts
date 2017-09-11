@@ -2,10 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
-import { DxDataGridModule } from 'devextreme-angular';
+import { DxDataGridModule, DxTemplateModule } from 'devextreme-angular';
 import { DxButtonModule } from 'devextreme-angular';
 
-import { APP_CONFIG, AppConfig } from "./app.config";
 import { AppRoutingModule } from "./app-routing.module";
 import { EmployeeService } from "./employee/employee.service";
 
@@ -21,6 +20,7 @@ import { EmployeeComponent } from './employee/employee.component';
   imports: [
     BrowserModule,
     DxDataGridModule,
+    DxTemplateModule,
     DxButtonModule,
     HttpModule,
     AppRoutingModule
@@ -35,10 +35,6 @@ import { EmployeeComponent } from './employee/employee.component';
     EmployeeComponent
   ],
   providers: [
-    {
-      provide: APP_CONFIG,
-      useValue: AppConfig
-    },
     EmployeeService
   ],
   bootstrap: [AppComponent]
