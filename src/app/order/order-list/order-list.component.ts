@@ -60,7 +60,10 @@ export class OrderListComponent implements OnInit {
   getDetails(orderID: number) {
     this.orderService
       .getOrderDetails(orderID)
-      .then(data => this.orderDetails = data);
+      .then(data => {
+        this.orderDetails = data;
+        return data;
+      });
   }
 
 }

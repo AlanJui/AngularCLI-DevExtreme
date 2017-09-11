@@ -65,9 +65,9 @@
         [paging]="true">
     </dxo-remote-operations>
 
-    <div *dxTemplate="let order of 'detail'">
-        <div class="internal-grid-container" (click)="getDetails(order.data.orderID)">
-            <div>{{order.data.orderID}}</div>
+    <div *dxTemplate="let order of 'detail'" >
+        <div class="internal-grid-container">
+            <div (click)="getDetails(order.data.orderID)" >{{order.data.orderID}}</div>
             <dx-data-grid class="internal-grid"
                 [dataSource]="orderDetails"
                 [showBorders]="true"
