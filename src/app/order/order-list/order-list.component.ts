@@ -62,7 +62,6 @@ export class OrderListComponent implements OnInit {
       .getOrderDetails(orderID)
       .then(data => {
         this.orderDetails = data;
-        return data;
       });
   }
 

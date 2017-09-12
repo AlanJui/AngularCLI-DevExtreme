@@ -37,10 +37,10 @@
     <dxo-remote-operations [sorting]="true" [paging]="true">
     </dxo-remote-operations>
 
-    <div *dxTemplate="let order of 'detail'">
+    <div *dxTemplate="let order of 'detail'" (click)="getDetails(order.data.orderID)">
         <div class="internal-grid-container">
-            <div (click)="getDetails(order.data.orderID)">{{order.data.orderID}}</div>
-            <dx-data-grid class="internal-grid" [dataSource]="orderDetails" [showBorders]="true" [columnAutoWidth]="true">
+            <div >{{order.data.orderID}}</div>
+            <dx-data-grid class="internal-grid" [(dataSource)]="orderDetails" [showBorders]="true" [columnAutoWidth]="true">
                 <dxi-column dataField="product"></dxi-column>
                 <dxi-column dataField="price" dataType="currency"></dxi-column>
                 <dxi-column dataField="quantity"></dxi-column>
