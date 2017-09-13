@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
+import { environment } from '../../environments/environment';
 // declare var jquery: any;
 // declare var $: any;
 
@@ -8,8 +10,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent implements OnInit {
+  title: string;
 
-  constructor() { }
+  constructor() {
+    this.title = environment.hostName;
+  }
 
   ngOnInit() {
   }
