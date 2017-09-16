@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { environment } from '../../environments/environment';
-// declare var jquery: any;
-// declare var $: any;
 
 @Component({
   selector: 'nav-menu',
@@ -18,6 +16,5 @@ export class NavMenuComponent implements OnInit {
 
   ngOnInit() {
   }
-
 
 }
