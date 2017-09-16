@@ -1,43 +1,62 @@
-<div class='main-nav'>
-    <div class='navbar navbar-inverse'>
-        <div class='navbar-header'>
-            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse' (click)="navbarToggle()">
-                <span class='sr-only'>Toggle navigation</span>
-                <span class='icon-bar'></span>
-                <span class='icon-bar'></span>
-                <span class='icon-bar'></span>
-            </button>
-            <a class='navbar-brand' [routerLink]="['/home']">Angular CLI + DevExtreme ({{title}})</a>
-        </div>
-        <div class='clearfix'></div>
-        <div class='navbar-collapse collapse'>
-            <ul class='nav navbar-nav'>
-                <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/home']">
-                        <span class='glyphicon glyphicon-home'></span> Home
-                    </a>
-                </li>
-                <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/help']">
-                        <span class='glyphicon glyphicon-education'></span> Help
-                    </a>
-                </li>
-                <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/orderList']">
-                        <span class='glyphicon glyphicon-th-list'></span> Order List
-                    </a>
-                </li>
-                <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/order']">
-                        <span class='glyphicon glyphicon-th-list'></span> Order Edit
-                    </a>
-                </li>
-                <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/employee']">
-                        <span class='glyphicon glyphicon-th-list'></span> Employee
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
+<nav id="sidebar">
+  <!-- Sidebar Header -->
+  <div class="sidebar-header">
+    <h3>DevExtreme App</h3>
+  </div>
+
+  <!-- Sidebar Links -->
+  <ul class="list-unstyled components">
+    <li [routerLinkActive]="['link-active']">
+      <a [routerLink]="['/home']">
+        <span class='glyphicon glyphicon-home'></span>
+        Home
+      </a>
+    </li>
+
+    <li [routerLinkActive]="['link-active']">
+      <a [routerLink]="['/help']">
+        <span class='glyphicon glyphicon-education'></span>
+        Help
+      </a>
+    </li>
+
+    <li><!-- Link with dropdown items -->
+      <a href="#orderSubmenu" data-toggle="collapse" aria-expanded="false">
+        <span class='glyphicon glyphicon-folder-open'></span>
+        Order
+      </a>
+      <ul class="collapse list-unstyled" id="orderSubmenu">
+        <li [routerLinkActive]="['link-active']">
+          <a [routerLink]="['/orderList']">
+            <span class='glyphicon glyphicon-list-alt'></span>
+            Order List
+          </a>
+        </li>
+
+        <li [routerLinkActive]="['link-active']">
+          <a [routerLink]="['/order']">
+            <span class='glyphicon glyphicon-th-list'></span>
+            Order Edit
+          </a>
+        </li>
+      </ul>
+    <li [routerLinkActive]="['link-active']">
+      <a [routerLink]="['/employee']">
+        <span class='glyphicon glyphicon-user'></span>
+        Employee
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <span class="glyphicon glyphicon-blackboard"></span>
+        Portfolio
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <span class="glyphicon glyphicon-envelope"></span>
+        Contact
+      </a>
+    </li>
+  </ul>
+</nav>

@@ -19,9 +19,5 @@ export class NavMenuComponent implements OnInit {
   ngOnInit() {
   }
 
-  navbarToggle() {
-    // alert('OK!');
-    // $('.navbar-toggle').slideToggle();
-  }
 
 }

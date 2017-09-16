@@ -1,10 +1,19 @@
-<div class='container-fluid'>
-  <div class='row'>
-      <div class='col-sm-3'>
-          <nav-menu></nav-menu>
-      </div>
-      <div class='col-sm-9 body-content'>
-          <router-outlet></router-outlet>
-      </div>
+<div class="wrapper">
+
+  <!-- Sidebar -->
+  <nav-menu></nav-menu>
+
+  <!-- Page Content -->
+  <div id="content">
+    <button type="button" (click)="navbarToggle()"
+            id="sidebarCollapse"
+            class="btn btn-info navbar-btn">
+      <i class="glyphicon glyphicon-align-left"></i>
+      Toggle Sidebar
+    </button>
+
+    <!-- Web contents -->
+    <router-outlet></router-outlet>
   </div>
+
 </div>
